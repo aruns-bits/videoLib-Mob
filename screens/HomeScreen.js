@@ -1,13 +1,19 @@
 import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
-
 const HomeScreen = (props) => {
   return (
     <View style={styles.screen}>
       <Text>The Home Screen..</Text>
-      <Button title="go to courses" onPress={()=>props.navigation.navigate({routeName:'Courses'})} />
+      <Button
+        title="go to courses"
+        onPress={() => props.navigation.navigate({ routeName: "Courses" })}
+      />
     </View>
   );
+};
+
+HomeScreen.navigationOptions = {
+  headerTitle: "VLibrary",
 };
 
 const styles = StyleSheet.create({

@@ -1,7 +1,30 @@
 import React from "react";
-import { View, TextInput, StyleSheet, Button } from "react-native";
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  FlatList,
+  Button,
+} from "react-native";
+import CourseGridTile from "../components/CourseGridTile";
+import { COURSES } from "../Data/Courses";
 
 const CoursesScreen = (props) => {
+  const renderGridItem = (itemData) => {
+    return (
+      <CourseGridTile
+        title={itemData.item.title}
+        onSelect={() => {
+          props.navigation.navigate({
+            routeName: "VideoList",
+            params: {
+              courseId: itemData.item.id,
+            },
+          });
+        }}
+      />
+    );
+  };
   return (
     <View style={{ paddingTop: 30, marginTop: 10 }}>
       <View
@@ -21,8 +44,9 @@ const CoursesScreen = (props) => {
             marginRight: 10,
           }}
         />
-        <Button title="search..1" />
+        <Button title="search" />
       </View>
+      <FlatList data={COURSES} renderItem={renderGridItem} numColumns={2} />
     </View>
   );
 };
