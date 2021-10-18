@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
+import { useDispatch } from "react-redux";
+
+import { getVideoList } from "../Store/actions/VideoList";
+
 const HomeScreen = (props) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getVideoList());
+  }, []);
+
   return (
     <View style={styles.screen}>
       <Text>The Home Screen..</Text>

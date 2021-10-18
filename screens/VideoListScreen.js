@@ -1,9 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { View, Text, StyleSheet } from "react-native";
 
 import { COURSES } from "../Data/Courses";
 
 const VideoListScreen = (props) => {
+  const videos = useSelector(state => state.videoLists);
+  console.log(videos);
+
   return (
     <View style={styles.screen}>
       <Text>The Video List Screen..</Text>
@@ -16,7 +20,6 @@ VideoListScreen.navigationOptions = (navigationData) => {
   const Course = COURSES.filter((course) => {
     return String(course.id) === String(CourseId);
   });
-
 
   return {
     headerTitle: Course[0].title,
