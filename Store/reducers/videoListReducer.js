@@ -1,27 +1,20 @@
-import { GET_VIDEO_LIST } from "../actions/VideoList";
+import { GET_VIDEO_LIST, SELECT_COURSE } from "../actions/VideoList";
 
-const initialState = {
-  mathemathics: [
-    { name: "algebra", url: "" },
-    { name: "trignomitry", url: "" },
-  ],
-  programming: [
-    { name: "python", url: "" },
-    { name: "java", url: "" },
-  ],
-};
+const initialState = { videos: {}, selectedCourse: "" };
 const videoListReducer = (state = initialState, action) => {
-
-  switch(action.type){
+  switch (action.type) {
     case GET_VIDEO_LIST:
       return {
         ...state,
-        labs:[
-          {name:"language processor", url:""},
-          {name: "graphics", url:""}
-        ]
-      }
-    default: return state 
+        videos: {...action.payload},
+      };
+    case SELECT_COURSE:
+      return {
+        ...state,
+        selectedCourse: action.payload,
+      };
+    default:
+      return state;
   }
 };
 
